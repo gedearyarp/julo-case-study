@@ -1,8 +1,10 @@
-import HealthcheckService from './service/healthcheck.js';
-import HealthcheckController from './controller/healthcheck.js';
 import dbConnect from './util/db-connect.js';
 import Wallet from './domain/wallet.js';
+
+import HealthcheckService from './service/healthcheck.js';
 import CreateWalletService from './service/create-wallet.js';
+
+import HealthcheckController from './controller/healthcheck.js';
 import CreateWalletController from './controller/create-wallet.js';
 
 export default async function init() {
