@@ -11,4 +11,9 @@ const walletSchema = new mongoose.Schema({
 
 const Wallet = mongoose.model('Wallet', walletSchema);
 
+export const EWalletStatus = {
+    ENABLED: 'enabled',
+    DISABLED: 'disabled',
+};
+
 export default Wallet;

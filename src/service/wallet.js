@@ -1,4 +1,5 @@
 import StandardError from '../util/standard-error.js';
+import { EWalletStatus } from '../domain/wallet.js';
 
 export default class WalletService {
     constructor(walletRepo) {
@@ -7,9 +8,12 @@ export default class WalletService {
 
     async enableWallet(customerXid) {
         const oldWallet = await this.walletRepo.findOne({ owned_by: customerXid });
-        if (oldWallet.status === 'enabled') throw new StandardError(400, 'Already enabled');
+        if (oldWallet.status === EWalletStatus.ENABLED) throw new StandardError(400, 'Already enabled');
 
-        await this.walletRepo.updateOne({ owned_by: customerXid }, { status: 'enabled', enabled_at: new Date() });
+        await this.walletRepo.updateOne(
+            { owned_by: customerXid },
+            { status: EWalletStatus.ENABLED, enabled_at: new Date() },
+        );
         const wallet = await this.walletRepo.findOne({ owned_by: customerXid });
 
         return {
@@ -22,7 +26,10 @@ export default class WalletService {
     }
 
     async disableWallet(customerXid) {
-        await this.walletRepo.updateOne({ owned_by: customerXid }, { status: 'disabled', disabled_at: new Date() });
+        await this.walletRepo.updateOne(
+            { owned_by: customerXid },
+            { status: EWalletStatus.DISABLED, disabled_at: new Date() },
+        );
         const wallet = await this.walletRepo.findOne({ owned_by: customerXid });
 
         return {
@@ -57,7 +64,7 @@ export default class WalletService {
     async checkWalletActive(customerXid) {
         const wallet = await this.walletRepo.findOne({ owned_by: customerXid });
 
-        if (wallet.status !== 'enabled') throw new StandardError(400, 'Wallet disabled');
+        if (wallet.status !== EWalletStatus.ENABLED) throw new StandardError(400, 'Wallet disabled');
         return true;
     }
 }
