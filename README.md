@@ -1,5 +1,8 @@
 # [Julo Case Study] Mini Wallet API
 
+## Contributors
+
+This project is the creation of **I Gede Arya Raditya Parameswara** and was constructed specifically for the Julo Technical Assessment.
 
 ## Overview
 
@@ -44,3 +47,11 @@ Follow these steps to get the API up and running on your local environment:
     ```
 
 This will start the API server, typically on `http://localhost:3000`, unless configured otherwise. You can now make API calls to this server using a tool like Postman or any HTTP client of your choice.
+
+## API Documentation
+
+For ease of testing and to get started with the API endpoints quickly, we have provided a Postman collection. You can use the collection to send requests to the API without having to manually set them up.
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/sarpras/workspace/sharing-workspace/collection/15708562-7595e312-6c8a-438a-b24e-9d4f5bf01ac8?action=share&creator=15708562)
+
+Simply click the button above to import the Mini Wallet API collection into your Postman workspace.
