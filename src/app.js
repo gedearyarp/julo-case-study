@@ -5,17 +5,18 @@ import bodyParser from 'body-parser';
 
 import init from './init.js';
 import { PORT } from './util/config.js';
-import errorHandler from './middleware/handle-async.js';
 import validateToken from './middleware/validate-token.js';
 
 async function setupRoutes(app) {
     const {
         healthcheckController,
         createWalletController,
+        walletController,
     } = await init();
 
     app.use('/healthcheck', healthcheckController.getRouter());
     app.use('/api/v1/init', createWalletController.getRouter());
+    app.use('/api/v1/wallet', validateToken, walletController.getRouter());
 }
 
 export async function setupMiddleware(app) {

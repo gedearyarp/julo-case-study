@@ -34,7 +34,9 @@ export default async function validateToken(req, res, next) {
         });
     }
 
-    req.customerXid = decoded.customer_xid;
+    req.decoded = {
+        customerXid: decoded.customer_xid,
+    };
 
     return next();
 }

@@ -1,7 +1,6 @@
 import { Router } from 'express';
 
 import { body, validationResult } from 'express-validator';
-import logger from '../util/logger.js';
 import handleAsync from '../middleware/handle-async.js';
 
 export default class CreateWalletController {
@@ -31,6 +30,6 @@ export default class CreateWalletController {
 
         const { customer_xid } = req.body;
         const token = await this.createWalletService.createWallet(customer_xid);
-        return res.status(200).json({ token });
+        return res.status(200).json({ status: 'success', data: { token } });
     }
 }
