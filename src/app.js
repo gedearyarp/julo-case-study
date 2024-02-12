@@ -4,14 +4,16 @@ import httpContext from 'express-http-context';
 import bodyParser from 'body-parser';
 
 import init from './init.js';
-import { PORT } from './config.js';
+import { PORT } from './util/config.js';
 
 async function setupRoutes(app) {
     const {
         healthcheckController,
+        createWalletController,
     } = await init();
 
     app.use('/healthcheck', healthcheckController.getRouter());
+    app.use('/api/v1/init', createWalletController.getRouter());
 }
 
 export async function setupMiddleware(app) {

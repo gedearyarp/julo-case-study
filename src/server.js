@@ -1,19 +1,13 @@
-import Logger from 'js-logger';
+import logger from './util/logger.js';
 import { createApp } from './app.js';
 
 (async () => {
     try {
         const app = await createApp();
         app.listen(app.get('port'), () => {
-            Logger.info(
-                {
-                    port_number: app.get('port'),
-                    env_string: app.get('env'),
-                },
-                'Started express server',
-            );
+            logger.info(`Server listening on port ${app.get('port')}`);
         });
     } catch (err) {
-        Logger.error(err, 'error caught in server.ts');
+        logger.error(err, 'error caught in server.js');
     }
 })();
