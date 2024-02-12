@@ -1,7 +1,5 @@
 import { Router } from 'express';
-import logger from '../util/logger.js';
 import handleAsync from '../middleware/handle-async.js';
-import StandardError from '../util/standard-error.js';
 
 export default class HealthcheckController {
     constructor(healthcheckService) {

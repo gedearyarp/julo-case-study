@@ -8,14 +8,16 @@ import WalletService from './service/wallet.js';
 import HealthcheckController from './controller/healthcheck.js';
 import CreateWalletController from './controller/create-wallet.js';
 import WalletController from './controller/wallet.js';
+import Transaction from './domain/transaction.js';
 
 export default async function init() {
     await dbConnect();
     const walletRepo = Wallet;
+    const transactionRepo = Transaction;
 
     const healthcheckService = new HealthcheckService();
     const createWalletService = new CreateWalletService(walletRepo);
-    const walletService = new WalletService(walletRepo);
+    const walletService = new WalletService(walletRepo, transactionRepo);
 
     const healthcheckController = new HealthcheckController(healthcheckService);
     const createWalletController = new CreateWalletController(createWalletService);
