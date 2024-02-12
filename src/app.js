@@ -3,8 +3,8 @@ import helmet from 'helmet';
 import httpContext from 'express-http-context';
 import bodyParser from 'body-parser';
 
-import init from './init';
-import { PORT } from './config';
+import init from './init.js';
+import { PORT } from './config.js';
 
 async function setupRoutes(app) {
     const {

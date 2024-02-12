@@ -3,7 +3,9 @@ import { Router } from 'express';
 export default class HealthcheckController {
     constructor(healthcheckService) {
         this.healthcheckService = healthcheckService;
+
         this.router = Router();
+        this.router.get('/liveness', HealthcheckController.getHealthcheckLiveness);
     }
 
     getRouter() {
@@ -11,6 +13,6 @@ export default class HealthcheckController {
     }
 
     static async getHealthcheckLiveness(_, res) {
-        return res.status(200).json({ status: 'OK' });
+        return res.status(200).json({ status: 'OK', data: 'Service is healthy' });
     }
 }
