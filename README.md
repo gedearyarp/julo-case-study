@@ -39,7 +39,10 @@ Follow these steps to get the API up and running on your local environment:
     cd julo-case-study
     yarn install
     ```
-3. **Start the Application**
+3. **.env File**
+
+    Since the `.env` file contains sensitive information and should not be committed to version control, it is not included in the repository. To obtain the `.env` file, please reach out to me directly on WhatsApp, and I will provide you with the necessary configuration.
+4. **Start the Application**
 
     Once the dependencies are installed, you can start the application using Yarn:
     ```
